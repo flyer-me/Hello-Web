@@ -16,7 +16,8 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
 
-import cn.edu.sut.util.RandomUtil;
+//import cn.edu.sut.util.RandomUtil;
+import com.tnt.util.RandomUtil;
 import net.sf.json.JSONObject;
 
 @WebServlet("/send.do")
