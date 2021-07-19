@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 引入外部资源文件 -->
+	<properties resource="db.properties"></properties>
+
+<!-- 给类取别名 -->
+	<typeAliases>
+		<!-- 类型 -->
+		<!-- <typeAlias type="com.tym.pojo.Student" alias="stu"/> -->
+		<!-- 指定包路径下面的所有类取别名，可以直接使用类名，或类名首字母小写 -->
+		<package name="com.tym.pojo"/>
+	</typeAliases>
+		
+	<!-- 引入插件 -->
+	<!-- <plugins></plugins> -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
+	
+	<!-- 全局的设置 自动映射的级别，懒加载，缓存（一级缓存（默认开启）、二级缓存（需要开启））等 -->
+	<!-- <settings></settings> -->
+	<!-- 配置数据库的连接信息 -->
+	<environments default="mysql">
+		<environment id="mysql">
+			<!-- 事务管理器：type="[JDBC|MANAGED]" -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 数据源：type="[UNPOOLED|POOLED|JNDI]" -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+				
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 引入sql映射文件 -->
+	<mappers>
+		<package name="com.tym.mapper"/>
+	</mappers>
+</configuration>

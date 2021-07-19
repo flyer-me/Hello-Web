@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zz.mapper.OrderRecipientsMapper" >
+  <resultMap id="BaseResultMap" type="com.zz.pojo.OrderRecipients" >
+    <id column="recipients_id" property="recipientsId" jdbcType="INTEGER" />
+    <result column="recipients_name" property="recipientsName" jdbcType="VARCHAR" />
+    <result column="recipients_address" property="recipientsAddress" jdbcType="VARCHAR" />
+    <result column="recipients_phone" property="recipientsPhone" jdbcType="VARCHAR" />
+    <result column="recipients_user" property="recipientsUser" jdbcType="INTEGER" />
+    <result column="recipients_checked" property="recipientsChecked" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    recipients_id, recipients_name, recipients_address, recipients_phone, recipients_user, 
+    recipients_checked
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zz.pojo.OrderRecipientsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_recipients
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_recipients
+    where recipients_id = #{recipientsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_recipients
+    where recipients_id = #{recipientsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zz.pojo.OrderRecipientsExample" >
+    delete from order_recipients
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zz.pojo.OrderRecipients" >
+    insert into order_recipients (recipients_id, recipients_name, recipients_address, 
+      recipients_phone, recipients_user, recipients_checked
+      )
+    values (#{recipientsId,jdbcType=INTEGER}, #{recipientsName,jdbcType=VARCHAR}, #{recipientsAddress,jdbcType=VARCHAR}, 
+      #{recipientsPhone,jdbcType=VARCHAR}, #{recipientsUser,jdbcType=INTEGER}, #{recipientsChecked,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.pojo.OrderRecipients" >
+    insert into order_recipients
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recipientsId != null" >
+        recipients_id,
+      </if>
+      <if test="recipientsName != null" >
+        recipients_name,
+      </if>
+      <if test="recipientsAddress != null" >
+        recipients_address,
+      </if>
+      <if test="recipientsPhone != null" >
+        recipients_phone,
+      </if>
+      <if test="recipientsUser != null" >
+        recipients_user,
+      </if>
+      <if test="recipientsChecked != null" >
+        recipients_checked,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recipientsId != null" >
+        #{recipientsId,jdbcType=INTEGER},
+      </if>
+      <if test="recipientsName != null" >
+        #{recipientsName,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientsAddress != null" >
+        #{recipientsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientsPhone != null" >
+        #{recipientsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientsUser != null" >
+        #{recipientsUser,jdbcType=INTEGER},
+      </if>
+      <if test="recipientsChecked != null" >
+        #{recipientsChecked,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zz.pojo.OrderRecipientsExample" resultType="java.lang.Integer" >
+    select count(*) from order_recipients
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_recipients
+    <set >
+      <if test="record.recipientsId != null" >
+        recipients_id = #{record.recipientsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.recipientsName != null" >
+        recipients_name = #{record.recipientsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipientsAddress != null" >
+        recipients_address = #{record.recipientsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipientsPhone != null" >
+        recipients_phone = #{record.recipientsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipientsUser != null" >
+        recipients_user = #{record.recipientsUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.recipientsChecked != null" >
+        recipients_checked = #{record.recipientsChecked,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_recipients
+    set recipients_id = #{record.recipientsId,jdbcType=INTEGER},
+      recipients_name = #{record.recipientsName,jdbcType=VARCHAR},
+      recipients_address = #{record.recipientsAddress,jdbcType=VARCHAR},
+      recipients_phone = #{record.recipientsPhone,jdbcType=VARCHAR},
+      recipients_user = #{record.recipientsUser,jdbcType=INTEGER},
+      recipients_checked = #{record.recipientsChecked,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.pojo.OrderRecipients" >
+    update order_recipients
+    <set >
+      <if test="recipientsName != null" >
+        recipients_name = #{recipientsName,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientsAddress != null" >
+        recipients_address = #{recipientsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientsPhone != null" >
+        recipients_phone = #{recipientsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientsUser != null" >
+        recipients_user = #{recipientsUser,jdbcType=INTEGER},
+      </if>
+      <if test="recipientsChecked != null" >
+        recipients_checked = #{recipientsChecked,jdbcType=INTEGER},
+      </if>
+    </set>
+    where recipients_id = #{recipientsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.pojo.OrderRecipients" >
+    update order_recipients
+    set recipients_name = #{recipientsName,jdbcType=VARCHAR},
+      recipients_address = #{recipientsAddress,jdbcType=VARCHAR},
+      recipients_phone = #{recipientsPhone,jdbcType=VARCHAR},
+      recipients_user = #{recipientsUser,jdbcType=INTEGER},
+      recipients_checked = #{recipientsChecked,jdbcType=INTEGER}
+    where recipients_id = #{recipientsId,jdbcType=INTEGER}
+  </update>
+</mapper>
