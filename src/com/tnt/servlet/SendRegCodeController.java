@@ -1,10 +1,8 @@
 package com.tnt.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +14,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
 
-import cn.edu.sut.util.RandomUtil;
+import com.tnt.util.RandomUtil;/* RandomUtil里面定义了生成方法，直接import.  _wpf*/
 import net.sf.json.JSONObject;
 
 @WebServlet("/send.do")
