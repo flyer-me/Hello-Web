@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+request.setAttribute("path", request.getContextPath());
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,7 +44,7 @@
 			<!-- 头部右边 -->
 			<div class="headRight">
 				<ul>
-					<li><a href="#">我的订单</a></li><span>|</span>
+					<li><a href="${path }/allOrder.jsp">我的订单</a></li><span>|</span>
 					<li class="erWrap">
 						<strong></strong>
 						<a href="#">个人中心</a>
@@ -201,7 +206,7 @@
 			</div>
 		</div>
 		<!--购物车-->
-		<a href="#" class="buy_car">
+		<a href="${path }/Cart.jsp" class="buy_car">
 			<p>购物车</p>
 			<em>0</em>
 		</a>
@@ -789,7 +794,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -814,7 +819,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -839,7 +844,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -864,7 +869,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -889,7 +894,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -914,7 +919,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -939,7 +944,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -964,7 +969,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -989,7 +994,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1014,7 +1019,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1039,7 +1044,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1064,7 +1069,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1089,7 +1094,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1114,7 +1119,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1139,7 +1144,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1164,7 +1169,7 @@
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
