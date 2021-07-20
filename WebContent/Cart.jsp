@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+request.setAttribute("path", request.getContextPath());
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -303,7 +308,7 @@
 				<span class="checkbox Allcheck"></span>
 				<span>全选</span>
 				<span class="Information">删除选中商品</span>
-				<a href="#">去结算</a>
+				<a href=""${path }/Cart-pay.jsp">去结算</a>
 				<p>
 					<strong>已选商品<b id="allnum"> 1 </b>件</strong>
 					<strong>总价（不含运费）：<b>￥<u id="allpri">114.00</u></b></strong><br>
