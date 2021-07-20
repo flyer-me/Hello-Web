@@ -1,22 +1,33 @@
 package com.tnt.pojo;
 
 import java.util.Date;
-
+/*
+ * 订单  _wpf
+ */
 public class Orders {
+	
+	//订单编号（主键）
     private String orderId;
 
+    //
     private Integer orderUser;
-
+    
+    //地址
     private String orderAddress;
 
+    //电话
     private String orderPhone;
 
+    //用户名
     private String orderName;
 
+    //订单状态：1 2 3 4 5
     private Integer orderStatus;
 
+    //订单总额
     private Float orderPrice;
 
+    //时间
     private Date orderTime;
 
     public String getOrderId() {
