@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+request.setAttribute("path", request.getContextPath());
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -210,7 +215,7 @@
 	</div>
 	<div class="CSsubmit">
 		<a class="left" href="#">联系客服</a>
-		<a class="right" href="#">继续购物>GO</a>	
+		<a class="right" href="${path }/list.jsp">继续购物>GO</a>	
 	</div>
 </div>
 <!-- 底部 -->

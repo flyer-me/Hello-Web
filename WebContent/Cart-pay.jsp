@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+request.setAttribute("path", request.getContextPath());
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,7 +41,7 @@
 		<div class="headRight">
 			<ul>
 				<li><a class="everday" href="#">每日签到</a></li><span>|</span>
-				<li><a href="#">我的订单</a></li><span>|</span>
+				<li><a href="${path }/allOrder.jsp">我的订单</a></li><span>|</span>
 				<li class="erWrap">
 					<strong></strong>
 					<a href="#">个人中心</a>
@@ -214,7 +219,7 @@
 				 	收货信息 : 河南省，郑州市，高新区，紫薇小区，马云，手机：155****6627
 				 </span>
 			</p>
-			<a href="#" class="right">
+			<a href="${path }/allOrder.jsp" class="right">
 				我的订单 &gt;
 			</a>
 		</div>
