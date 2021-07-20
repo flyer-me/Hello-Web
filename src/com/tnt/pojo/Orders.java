@@ -82,4 +82,27 @@ public class Orders {
     public void setOrderTime(Date orderTime) {
         this.orderTime = orderTime;
     }
+
+	
+
+	public Orders(String orderId, Integer orderUser, String orderAddress, String orderPhone, String orderName,
+			Integer orderStatus, Float orderPrice, Date orderTime) {
+		super();
+		this.orderId = orderId;
+		this.orderUser = orderUser;
+		this.orderAddress = orderAddress;
+		this.orderPhone = orderPhone;
+		this.orderName = orderName;
+		this.orderStatus = orderStatus;
+		this.orderPrice = orderPrice;
+		this.orderTime = orderTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Orders [orderId=" + orderId + ", orderUser=" + orderUser + ", orderAddress=" + orderAddress
+				+ ", orderPhone=" + orderPhone + ", orderName=" + orderName + ", orderStatus=" + orderStatus
+				+ ", orderPrice=" + orderPrice + ", orderTime=" + orderTime + "]";
+	}
+    
 }
