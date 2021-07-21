@@ -1,6 +1,13 @@
 package com.tnt.pojo;
 
+import javax.servlet.http.HttpSession;
+
+/*
+ * 购物车
+ */
 public class Shopitems {
+	
+	//购物车商品编号（主键）
     private Integer itemId;
 
     private Integer itemGoods;
@@ -40,4 +47,14 @@ public class Shopitems {
     public void setItemUser(Integer itemUser) {
         this.itemUser = itemUser;
     }
+
+	public static boolean insert(String pid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public HttpSession getShopitemsList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

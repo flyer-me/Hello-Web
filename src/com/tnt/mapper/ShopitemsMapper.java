@@ -1,30 +1,25 @@
 package com.tnt.mapper;
 
+import java.util.List;
+
 import com.tnt.pojo.Shopitems;
 import com.tnt.pojo.ShopitemsExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface ShopitemsMapper {
+	
+	/*
+	 * 包含主要操作：delete insert
+	 */
     int countByExample(ShopitemsExample example);
-
-    int deleteByExample(ShopitemsExample example);
 
     int deleteByPrimaryKey(Integer itemId);
 
     int insert(Shopitems record);
 
-    int insertSelective(Shopitems record);
-
     List<Shopitems> selectByExample(ShopitemsExample example);
 
     Shopitems selectByPrimaryKey(Integer itemId);
 
-    int updateByExampleSelective(@Param("record") Shopitems record, @Param("example") ShopitemsExample example);
+	List<Shopitems> getShopitemsList();
 
-    int updateByExample(@Param("record") Shopitems record, @Param("example") ShopitemsExample example);
-
-    int updateByPrimaryKeySelective(Shopitems record);
-
-    int updateByPrimaryKey(Shopitems record);
 }
