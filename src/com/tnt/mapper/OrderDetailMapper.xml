@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zz.mapper.OrderDetailMapper" >
+<mapper namespace="com.tnt.mapper.OrderDetailMapper" >
   <resultMap id="BaseResultMap" type="com.zz.pojo.OrderDetail" >
     <id column="detail_id" property="detailId" jdbcType="INTEGER" />
     <result column="detail_order" property="detailOrder" jdbcType="VARCHAR" />

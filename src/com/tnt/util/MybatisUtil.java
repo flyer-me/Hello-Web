@@ -32,17 +32,18 @@ public class MybatisUtil {
 	 * 功能描述：获取sqlSession对象的方法
 	 * 
 	 */
-	public static SqlSession getSqlSesion(){
+	public static SqlSession getSqlSession(){
 		return sqlSessionFactory.openSession();
 	}
 	/**
 	 * 功能描述：关闭sqlSession的方法
 	 * @param sqlSession
 	 */
-	public static void closesqlSqlSession(SqlSession sqlSession){
+	public static void closeSqlSession(SqlSession sqlSession) {
 		if(sqlSession!=null){
 			sqlSession.close();
 		}
+		
 	}
 }
 
