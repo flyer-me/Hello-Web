@@ -5,6 +5,8 @@ String path = request.getContextPath();
 request.setAttribute("path", request.getContextPath());
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -182,17 +184,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="logoAndSearch w1190 textWarp">
 		<!-- logo -->
 		<div class="logo">
-			<a href="index.html">澳猫团</a>
+			<a href="/index.jsp">澳猫团</a>
 		</div>
+		
 		<!-- 搜索 -->
-		<div class="search">
+		<form action="${path }/getGoodsList" method="post" id="myForm">
+			<div class="search">
 			<div class="txt">
-				<input class="SearchBttonValue" type="text" placeholder="Swisse/澳洲">
+				<input class="SearchBttonValue" type="text" placeholder="Swisse/澳洲" name="goods_name" value="${goods.goods_name }">
+				<%-- <option value = "-1">请选择</option>
+					<c:forEach items="${tlist }" var ="ty">
+						<option value = "${ty.typeId }" ${ty.typeId==pro.goodstype.typeId?"selected":"" }>${ty.tpye_name }</option>
+					</c:forEach> --%>
 			</div>
-			<a class="SearchBtton btn" href="#">
-				搜索
-			</a>
+			<input  class="SearchBtton btn" type="submit" value="搜索" ><%-- class="SearchBtton btn" href="${path }/getGoodsList" --%>
+			<a>	
+			</a> 
 			<div class="hot_search">
+				
 				<em>热门搜索：</em>
 				<span><a target="_blank" href="#">胶原蛋白</a></span>
 				<span><a target="_blank" href="#">叶绿素</a></span>
@@ -204,6 +213,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span><a target="_blank" href="#">运动保健</a></span>
 			</div>
 		</div>
+		</form>
+		
 		<!--购物车-->
 		<a href="${path }/Cart.jsp" class="buy_car">
 			<p>购物车</p>
@@ -446,7 +457,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul class="nav_list clearfix">
 				<!-- 右边导航菜单-->
 					<li>
-						<a href="#">首 页</a>
+						<a href="${path }/getAllGoodsList">首 页</a>
 					</li>
 					<li>
 						<a target="_blank" href="#">特价团购</a>

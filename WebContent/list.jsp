@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 request.setAttribute("path", request.getContextPath());
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+%>>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,7 +34,7 @@ function insertCart(pid){
 			<!-- 头部左边 -->
 			<div class="headLeft">
 				<div class="hello">
-					<a href="#">
+					<a href="${path }/index.jsp">
 						<em></em>
 						<span>澳猫首页</span>
 						<span>嗨，澳猫欢迎你！</span>
@@ -193,7 +195,7 @@ function insertCart(pid){
 	<div class="logoAndSearch w1190 textWarp">
 		<!-- logo -->
 		<div class="logo">
-			<a href="index.html">澳猫网</a>
+			<a href="${path }/index.jsp">澳猫网</a>
 		</div>
 		<!-- 搜索 -->
 		<div class="search">
@@ -793,9 +795,18 @@ function insertCart(pid){
 						<span class="right">&gt;</span>
 					</div>
 				</div>
+				
+				
+				
 				<!-- 商品内容 -->
-				<div class="product">
-					<ul class="clearfix">
+				<div class="product">	
+				<ul class="clearfix">
+				<!-- 没有查询到商品时 -->
+				<c:if test="${empty plist }">
+          		<tr><td colspan="10" align="center" bgcolor="#FFFFFF"><div class="STYLE1" style="font-size:36px;color:red;">本次查询没有商品！</div></td></tr>
+          		</c:if>
+					<c:forEach items="${plist }" var="goods" varStatus="status">
+					
 						<li>
 							<p class="privilege clearfix">
 								<span class="y right">包邮</span>
@@ -804,399 +815,38 @@ function insertCart(pid){
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
+								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
-								<a href="#">
+								<!-- <a target="_blank" href="#">
 									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
+								</a> -->
+								<a target="_blank" href="${pageContext.request.contextPath}/getGoodsList?goodsId=${goods.goods_id }"></a>
+									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/${goods.goods_img }" alt="">
 							</div>
 							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
+								<%-- <p><a href="#">${pro.goodsName }</a></p>
+								<p class="num">${pro.goodsNum }</p>
 								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
+									<strong>￥${pro.goodsPrice }</strong>
+								</p> --%>
+								<c:if  test="${goods.goods_name.length() < 15}">
+							  	 <p><a href="#">${goods.goods_name}</a></p>
+								</c:if>
+								<c:if  test="${goods.goods_name.length() > 15}">
+							  	 <p><a href="#">${goods.goods_name.substring(0,15)}...</a></p>
+								</c:if>
+								<p class="num">已售出${goods.goods_num}件</p>
+								<p>
+									<strong>￥${goods.goods_price }</strong>
+									<s>￥${goods.goods_price*2}</s>
 								</p>
 							</div>
 						</li>
-						<li>
-							<p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p>
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="r left">5.0折</span>
-							</p>
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li class="mrNone">
-							<p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p>
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="y right">包邮</span>
-								<span class="r left">5.0折</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="r left">5.0折</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li class="mrNone">
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="y right">包邮</span>
-								<span class="r left">5.0折</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="r left">5.0折</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li class="mrNone">
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="y right">包邮</span>
-								<span class="r left">5.0折</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li>
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="r left">5.0折</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
-						<li class="mrNone">
-							<!-- <p class="privilege clearfix">
-								<span class="b right">新品</span>
-								<span class="y left">包邮</span>
-							</p> -->
-							<div class="hoverShow collect"><em></em>收藏</div>
-							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
-							<div class="show">
-								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
-								<a class="contrast" href="#">商品对比</a>
-							</div>
-							<div class="proImg">
-								<a href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a>
-							</div>
-							<div class="proTxt">
-								<p><a href="#">Blackmores EPO月见草 澳洲澳佳宝 190粒...</a></p>
-								<p class="num">已售出1000件</p>
-								<p>
-									<strong>￥178.00</strong>
-									<s>￥256.00</s>
-								</p>
-							</div>
-						</li>
+						
 					</ul>
+					</c:forEach> 			
 				</div>
 				<!-- 底部页码 -->
 				<div class="footNum">

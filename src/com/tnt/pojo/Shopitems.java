@@ -20,7 +20,12 @@ public class Shopitems {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public Shopitems() {
+		super();
+		// 
+	}
+
+	public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
@@ -32,7 +37,15 @@ public class Shopitems {
         this.itemGoods = itemGoods;
     }
 
-    public Integer getItemNum() {
+    public Shopitems(Integer itemId, Integer itemGoods, Integer itemNum, Integer itemUser) {
+		super();
+		this.itemId = itemId;
+		this.itemGoods = itemGoods;
+		this.itemNum = itemNum;
+		this.itemUser = itemUser;
+	}
+
+	public Integer getItemNum() {
         return itemNum;
     }
 

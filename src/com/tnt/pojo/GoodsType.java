@@ -1,53 +1,55 @@
 package com.tnt.pojo;
 
 public class GoodsType {
-    private Integer typeId;
+    private Integer type_id;
 
-    private String typeName;
+    private String type_name;
 
-    private Integer typePid;
+    private Integer type_pid;
 
-    private Integer typeLevel;
+    private Integer type_level;
 
-    private String typePath;
+    private String type_path;
 
-    public Integer getTypeId() {
-        return typeId;
-    }
+	public Integer getType_id() {
+		return type_id;
+	}
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
+	public void setType_id(Integer type_id) {
+		this.type_id = type_id;
+	}
 
-    public String getTypeName() {
-        return typeName;
-    }
+	public String getType_name() {
+		return type_name;
+	}
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName == null ? null : typeName.trim();
-    }
+	public void setType_name(String type_name) {
+		this.type_name = type_name;
+	}
 
-    public Integer getTypePid() {
-        return typePid;
-    }
+	public Integer getType_pid() {
+		return type_pid;
+	}
 
-    public void setTypePid(Integer typePid) {
-        this.typePid = typePid;
-    }
+	public void setType_pid(Integer type_pid) {
+		this.type_pid = type_pid;
+	}
 
-    public Integer getTypeLevel() {
-        return typeLevel;
-    }
+	public Integer getType_level() {
+		return type_level;
+	}
 
-    public void setTypeLevel(Integer typeLevel) {
-        this.typeLevel = typeLevel;
-    }
+	public void setType_level(Integer type_level) {
+		this.type_level = type_level;
+	}
 
-    public String getTypePath() {
-        return typePath;
-    }
+	public String getType_path() {
+		return type_path;
+	}
 
-    public void setTypePath(String typePath) {
-        this.typePath = typePath == null ? null : typePath.trim();
-    }
+	public void setType_path(String type_path) {
+		this.type_path = type_path;
+	}
+
+    
 }

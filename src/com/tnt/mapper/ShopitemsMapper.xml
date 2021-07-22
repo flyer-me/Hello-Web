@@ -24,7 +24,7 @@
 		select * from shopitems p left join type t on p.tid = t.tid
 	</select>
 	<!--自定义结果集  -->
-	<resultMap id="BaseResultMap" type="com.zz.pojo.Shopitems">
+	<resultMap id="BaseResultMap" type="com.tnt.pojo.Shopitems">
 	<id column="item_id" property="itemId" jdbcType="INTEGER"/>
 	<result column="item_goods" property="itemGoods" jdbcType="INTEGER"/>
 	<result column="item_num" property="itemNum" jdbcType="INTEGER"/>

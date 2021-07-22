@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tnt.mapper.GoodsMapper" >
+
+
+
+ 	<!-- 查询商品记录数 -->
+	<select id="getGoodsCount" parameterType="goods" resultType="int">
+		select count(*) from goods g
+		<where>
+			<if test="goods_name != null">
+				and goods_name like concat("%",#{goods_name},"%") </if>
+			<if test="goods_type_id != null">
+				and g.goods_type_id = #{goodsType.type_id} </if>
+		</where>
+	</select>
+	
+	<!-- 查询商品信息 -->
+	<select id="getGoodsList" parameterType="map" resultMap="goodsType">
+		select * from goods g, goods_type c
+		where g.goods_type_id = c.type_id
+		and g.goods_name like concat("%",#{goods.goods_name},"%")
+		limit #{page.startIndex},#{page.pageSize}  
+	</select>
+	
+	<!-- 自定义结果集 -->
+	<resultMap type="goods" id="goodsType" autoMapping="true">
+		<id column="goods_id" property="goods_id" />
+		<!-- 商品和类型是一对一 -->
+		<!-- property="type" 中type表示实体类中的属性名称 -->
+		<!-- javaType="type"中Type表示返回类型中的bin.Type，取别名后简写为type -->
+		<association property="goodsType" javaType="goodsType" autoMapping="true"></association>
+	</resultMap>
+	
+	<!-- 展示所有商品信息 -->
+	<select id="getAllGoodsList" parameterType="map" resultMap="goodsType">
+		select * from goods g left join goods_type c on g.goods_type_id = c.type_id
+	</select>
+	
+</mapper>

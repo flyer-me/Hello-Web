@@ -270,16 +270,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.price }</span></div></td>
             <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.itemNum }</span></div></td>
             <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE4">
-            
-             <img src="images/pwd2_mobile.jpg" width="16" height="16" />
-            <A href="${pageContext.request.contextPath }/getProductInfoById?pid=${pro.pid }">查看</A>
-            &nbsp; &nbsp;
-            
-            <img src="images/edt.gif" width="16" height="16" />
-            <A href="${pageContext.request.contextPath }/toUpdate?pid=${pro.pid}">编辑</A>
-            &nbsp; &nbsp;
-            <img src="images/del.gif" width="16" height="16" />
-            <A href="javascript:void(0)" onclick="deleteById(${pro.pid})">删除</A>
+
             </span></div></td>
           </tr>
           </c:forEach>

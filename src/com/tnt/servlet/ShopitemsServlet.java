@@ -29,7 +29,7 @@ public class ShopitemsServlet extends HttpServlet {
 		//把需要在jsp页面展示的数据放置到request作用域中，一次请求
 		//session作用域，一次会话
 		request.setAttribute("plist", plist);
-		//跳转到商品展示页面
+		//跳转
 		request.getRequestDispatcher("/Cart.jsp").forward(request, response);
 	}
 
