@@ -8,7 +8,7 @@ import com.tnt.pojo.ShopitemsExample;
 public interface ShopitemsMapper {
 	
 	/*
-	 * 包含主要操作：delete insert
+	 * 包含操作:列表
 	 */
     int countByExample(ShopitemsExample example);
 

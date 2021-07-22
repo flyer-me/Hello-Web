@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</a>
 				</div>
 				<div class="user">
-					<a target="_blank" href="login.jsp">登录</a>
+					<a target="_blank" href="#">登录</a>
 					<span>|</span>
 					<a target="_blank" href="#">免费注册</a>
 				</div>
@@ -559,6 +559,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 							<c:forEach items="${pageInfo.list }" var="o" varStatus="status">
 							<c:forEach items="${o.orderDetail }" var="od" varStatus="status">
+									<c:if test="${pageInfo.list== null }">
+             						<tr><td colspan="10" align="center" bgcolor="#FFFFFF"><div class="STYLE1" style="font-size:30px;color:red;">本次查询没有商品！</div></td></tr>
+            				</c:if>
+									
 									<div class="merchandiseList">
 									<div class="ListHead">
 										<span>${o.orderTime }</span>
@@ -586,7 +590,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<p><a href="">订单详情</a></p>
 											</li>
 											<li class="five">
+												<c:if test="${o.orderStatus== 1}">
 												<a href="">取消订单</a>
+											   </c:if>
+											   <c:if test="${o.orderStatus== 2}">
+												<a href="">取消订单</a>
+												<a href="">去付款</a>
+											   </c:if>
+											   <c:if test="${o.orderStatus== 3}">
+												<a href="">提醒发货</a>
+											   </c:if>
+											   <c:if test="${o.orderStatus== 4}">
+												<a href="">确认收货</a>
+											   </c:if>
+											   <c:if test="${o.orderStatus== 5}">
+												<a href="">删除订单</a>
+												<a href="">我要评论</a>
+												</c:if>
 											</li>
 											
 										</ul>

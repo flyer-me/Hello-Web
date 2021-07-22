@@ -10,6 +10,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- 这里写：加入购物车 -->
+<script type="text/javascript" src="${path }/js/jquery.min.js"></script>
+<script>
+function insertCart(pid){
+	//alert(pid);//在商品列表功能完成后删除！
+	if(confirm("确定加入购物车？")){
+		window.location.href="${path}/insertCart?pid="+pid;
+	}
+}
+</script>
 	<meta charset="UTF-8">
 	<title>商品详情-澳猫团</title>
 	<link rel="shortcut icon" href="favicon.ico">
@@ -603,7 +613,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</p>
 							<p class="btn">
 								<a href="#">立即购买</a>
-								<a href="#"><em></em>加入购物车</a>
+								<!-- <a href="#"><em></em>加入购物车</a>  -->
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})"><em></em>加入购物车</a>
 								<a href="#"><em></em>商品对比</a>
 							</p>
 							<p class="evaluate">

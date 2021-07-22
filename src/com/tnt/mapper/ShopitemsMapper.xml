@@ -12,15 +12,10 @@
     	values (#{itemId,jdbcType=INTEGER}, #{itemGoods,jdbcType=INTEGER}, #{itemNum,jdbcType=INTEGER}, #{itemUser,jdbcType=INTEGER})
  	</insert>
  	
- 	<!-- <select id="getShopitemsList" resultMap="getShopitemsList">
+ 	<select id="getShopitemsList" >
 		select * from shopitems
 	</select>
-	<resultMap type="Shopitems" id="getShopitemsList" autoMapping="true">
-	<id property="itemId" column="item_id" />
-	<result property="itemGoods" column="item_goods" />
-	<result property="itemNum" column="item_num" />
-	<result property="itemUser" column="item_user" />
-	</resultMap>	 -->
+		 
 	
 	
 <!-- 

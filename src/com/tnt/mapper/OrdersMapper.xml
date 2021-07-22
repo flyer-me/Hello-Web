@@ -13,17 +13,23 @@
 		<result property="orderPrice" column="order_price"/>
 		<result property="orderTime" column="order_time"/>
 
-		<association property="orderStatusId" javaType="OrderStatus" autoMapping="true"></association>
+		<association property="orderStatusId" javaType="OrderStatus" autoMapping="true">
+			<id property="orderStatusId" column="order_status_id"/>
+			<result property="orderStatusName" column="order_status_name"/>
+		</association>
 		<collection property="orderDetail" ofType="OrderDetail"  autoMapping="true">
 			<id property="detailId" column="detail_id"/>
 			<result property="detailGoods" column="detail_goods"/>
-			
 			<result property="detailOrder" column="detail_order"/>
 			<result property="detailPrice" column="detail_price"/>
 			<result property="detailNum" column="detail_num"/>
 			<result property="detailGoods" column="detail_goods"/>
 			
-			<association property="detail_good" javaType="Goods" autoMapping="true"></association>
+			<association property="detail_good" javaType="Goods" autoMapping="true">
+			<id property="goodsId" column="goods_id"/>
+			<result property="goodsName" column="goods_Name"/>
+			<result property="goodsImg" column="goods_img"/>
+			</association>
 		</collection>
 	</resultMap>
 	

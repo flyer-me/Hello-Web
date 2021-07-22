@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function insertCart(pid){
 	//alert(pid);//在商品列表功能完成后删除！
 	if(confirm("确定加入购物车？")){
-		window.location.href="${path}/insertCart?pid="+pid;
+		window.location.href="${path}/getShopitemsList?pid="+pid;
 	}
 }
 </script>
@@ -815,7 +815,7 @@ function insertCart(pid){
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
