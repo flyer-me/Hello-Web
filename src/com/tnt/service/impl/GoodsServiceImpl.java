@@ -81,4 +81,17 @@ public class GoodsServiceImpl implements GoodsService {
 		return plist;
 	}
 
+	//根据商品信息查询id
+		@Override
+		public Goods getProductInfoById(String goods_id) {
+			// 1.获取SqlSession
+			SqlSession sqlSession = MybatisUtil.getSqlSession();
+			//2.获取mapper的接口对象
+			GoodsMapper goodsMapper = sqlSession.getMapper(GoodsMapper.class);
+			//3.调用mapper中查询商品类型的方法
+			Goods goods = goodsMapper.getGoodsInfoById(goods_id);
+			//4.关闭SqlSession
+			MybatisUtil.closeSqlSession(sqlSession);
+			return goods;
+		}
 }

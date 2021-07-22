@@ -17,5 +17,7 @@ public interface GoodsService {
 	List<GoodsType> getTypeList();
 
 	List<Goods> getAllGoodsList();
+	
+	Goods getProductInfoById(String goods_id);
 
 }

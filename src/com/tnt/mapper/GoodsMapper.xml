@@ -37,4 +37,7 @@
 		select * from goods g left join goods_type c on g.goods_type_id = c.type_id
 	</select>
 	
+	<!--  根据id查询商品信息  -->
+<select id="getGoodsInfoById" resultMap="goodsType"> select * from goods g left join goods_type c on g.goods_type_id = c.type_id where goods_id=#{goods_id} </select>
+	
 </mapper>

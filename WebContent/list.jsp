@@ -819,18 +819,11 @@ function insertCart(pid){
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
-								<!-- <a target="_blank" href="#">
-									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/product2L.jpg" alt="">
-								</a> -->
-								<a target="_blank" href="${pageContext.request.contextPath}/getGoodsList?goodsId=${goods.goods_id }"></a>
+								<a target="_blank" href="${pageContext.request.contextPath }/getGoodsInfoById?goods_id=${goods.goods_id }">
 									<img class="lazy" src="js/lazyload/grey.gif" data-original="images/${goods.goods_img }" alt="">
+								</a>
 							</div>
 							<div class="proTxt">
-								<%-- <p><a href="#">${pro.goodsName }</a></p>
-								<p class="num">${pro.goodsNum }</p>
-								<p>
-									<strong>￥${pro.goodsPrice }</strong>
-								</p> --%>
 								<c:if  test="${goods.goods_name.length() < 15}">
 							  	 <p><a href="#">${goods.goods_name}</a></p>
 								</c:if>

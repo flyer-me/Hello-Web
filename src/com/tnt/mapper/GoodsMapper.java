@@ -22,4 +22,7 @@ public interface GoodsMapper {
 	List<GoodsType> getTypeList();
 	
 	List<Goods> getAllGoodsList();
+	
+	//根据商品id查询商品详情
+		Goods getGoodsInfoById(String goods_id);
 }

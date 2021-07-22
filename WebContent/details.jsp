@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+String path = request.getContextPath();
+request.setAttribute("path", request.getContextPath());
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -485,19 +492,20 @@
 			<span class="SNRight">商品编号:SKU0008</span>
 		</div>
 		<!-- 产品介绍 -->
-		<div class="Proudct boxS w1190 textWarp">
+		
+			<div class="Proudct boxS w1190 textWarp">
 			<div class="ProW">
 				<div class="ProArea">
 					<div class="PApic">
 						<ul>
 							<li style="display:block;">	
-								<img src="images/lproduct.png" alt="Swisse 活力胶原蛋白液">
+								<img class="lazy" src="js/lazyload/grey.gif" data-original="images/${goods.goods_img }" alt="">
 								<!-- 大背景图 -->
-								<div class="PAbig" style="background-image: url(images/lproductBig.png);">
+								<div class="PAbig" style="background-image: url(images/${goods.goods_img });">
 								</div>
 							</li>
 							<li>	
-								<img src="images/contentPro.png" alt="Swisse 活力胶原蛋白液">
+								<img class="lazy" src="js/lazyload/grey.gif" data-original="images/${goods.goods_img }" alt="">
 								<div class="PAbig" style="background-image: url(images/lproductBig.png);">
 								</div>
 							</li>
@@ -510,10 +518,10 @@
 						<span class="left">&lt;</span>
 						<ul>
 							<li class="focued">
-								<img src="images/lproduct10.png" alt="Swisse 活力胶原蛋白液">
+								<img class="lazy" src="js/lazyload/grey.gif" data-original="images/${goods.goods_img }" alt="">
 							</li>
 							<li>
-								<img src="images/lproduct10.png" alt="Swisse 活力胶原蛋白液">
+								<img class="lazy" src="js/lazyload/grey.gif" data-original="images/${goods.goods_img }" alt="">
 							</li>
 						</ul>
 						<span class="right">&gt;</span>
@@ -534,7 +542,7 @@
 								<em></em><span>澳大利亚 进口</span>
 							</p>
 							<p class="Parea">
-								Swisse 澳洲活力胶原蛋白液 500毫升/瓶
+								${goods.goods_name}
 							</p>
 							<p class="PareaE">
 								<span class="cAEE">Swisse</span>
@@ -547,15 +555,15 @@
 						<li>
 							<p class="price">
 								<span class="prTi">价格</span>
-								<span>￥129.00</span>
+								<span>￥${goods.goods_price}</span>
 								<span>5.0折</span>
 								<span>包邮</span>
-								<span>国内参考价&nbsp;&nbsp;&nbsp;&nbsp;<s>￥259.00</s></span>
+								<span>国内参考价&nbsp;&nbsp;&nbsp;&nbsp;<s>￥${goods.goods_price*2}</s></span>
 							</p>
 							<p class="priyou">
 								<span class="prTi">优惠</span>
 								<span>手机专享价</span>
-								<span>￥125.00</span>
+								<span>￥${goods.goods_price*0.5 }</span>
 								<span>用手机购买</span>
 								<em>
 								</em>
@@ -607,7 +615,7 @@
 									<em></em>
 									100%
 								</span>
-								<span>月销量885</span>
+								<span>月销量${goods.goods_num }</span>
 								<span>累计评价1688</span>
 							</p>
 						</li>
@@ -637,6 +645,9 @@
 				<em></em>
 			</div>
 		</div>
+		
+		
+		
 		<!-- 限时特惠 -->
 		<div class="Privilege boxS textWarp w1190">
 			<h3>
