@@ -3,13 +3,21 @@ package com.tnt.pojo;
 public class OrderDetail {
     private Integer detailId;
 
-    private String detailOrder;
+    @Override
+	public String toString() {
+		return "OrderDetail [detailId=" + detailId + ", detailOrder=" + detailOrder + ", detailGoods=" + detailGoods
+				+ ", detailPrice=" + detailPrice + ", detailNum=" + detailNum + ", detail_good=" + detail_good + "]";
+	}
+
+	private String detailOrder;
 
     private Integer detailGoods;
 
     private Float detailPrice;
 
     private Integer detailNum;
+    //+
+    private Goods detail_good;
 
     public Integer getDetailId() {
         return detailId;
@@ -50,4 +58,12 @@ public class OrderDetail {
     public void setDetailNum(Integer detailNum) {
         this.detailNum = detailNum;
     }
+
+	public Goods getDetail_good() {
+		return detail_good;
+	}
+
+	public void setDetail_good(Goods detail_good) {
+		this.detail_good = detail_good;
+	}
 }

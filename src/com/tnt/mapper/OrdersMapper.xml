@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tnt.mapper.OrdersMapper" >
+	<!--  -->
+	<resultMap type="Orders" id="getOrderId" autoMapping="true">
+		<id property="orderId" column="order_id"/>
+		
+		<result property="orderUser" column="order_user"/>
+		<result property="orderAddress" column="order_address"/>
+		<result property="orderPhone" column="order_phone"/>
+		<result property="orderName" column="order_name"/>
+		<result property="orderStatus" column="order_status"/>
+		<result property="orderPrice" column="order_price"/>
+		<result property="orderTime" column="order_time"/>
+
+		<association property="orderStatusId" javaType="OrderStatus" autoMapping="true"></association>
+		<collection property="orderDetail" ofType="OrderDetail"  autoMapping="true">
+			<id property="detailId" column="detail_id"/>
+			<result property="detailGoods" column="detail_goods"/>
+			
+			<result property="detailOrder" column="detail_order"/>
+			<result property="detailPrice" column="detail_price"/>
+			<result property="detailNum" column="detail_num"/>
+			<result property="detailGoods" column="detail_goods"/>
+			
+			<association property="detail_good" javaType="Goods" autoMapping="true"></association>
+		</collection>
+	</resultMap>
+	
+	<select id="getAllOrders" resultMap="getOrderId">
+		 select * from orders o left join order_detail od on o.order_id=od.detail_order
+		 left join order_status os on o.order_status=os.order_status_id
+		 left join goods g on od.detail_goods= g.goods_id
+	</select>
+	
+</mapper>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!-- 必须定义名字空间:对应mapper接口的全限定类名 -->
-<mapper namespace="com.tnt.mapper.XiumiMapper">
+<mapper namespace="com.tnt.mapper.UpdateMimaMapper">
 	
 	<update id="updatemima">
 		update users set user_pass=#{user_pass} where user_phone=#{user_phone}

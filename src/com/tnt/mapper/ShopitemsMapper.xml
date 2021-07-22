@@ -2,33 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tnt.mapper.ShopitemsMapper" >
 	
-  	<!-- 有用 -->
-  <sql id="Base_Column_List" >
-    item_id, item_goods, item_num, item_user
-  </sql>
-
-	<!-- 删除操作 -->
   	<delete id="delete" parameterType="java.lang.Integer" >
     	delete from shopitems
     	where item_id = #{itemId,jdbcType=INTEGER}
   	</delete>
   	
-  	<!-- 添加操作 -->
   	<insert id="insert" parameterType="com.tnt.pojo.Shopitems" >
     	insert into shopitems (item_id, item_goods, item_num, item_user)
     	values (#{itemId,jdbcType=INTEGER}, #{itemGoods,jdbcType=INTEGER}, #{itemNum,jdbcType=INTEGER}, #{itemUser,jdbcType=INTEGER})
  	</insert>
  	
- 	<!-- 查询操作 -->
- 	<select id="getShopitemsList" resultMap="com.tnt.pojo.Shopitems" resultType="java.lang.Integer">
-		select * from shopitems p left join type t on p.tid = t.tid
+ 	<!-- <select id="getShopitemsList" resultMap="getShopitemsList">
+		select * from shopitems
 	</select>
-	<!--自定义结果集  -->
-	<resultMap id="BaseResultMap" type="com.tnt.pojo.Shopitems">
-	<id column="item_id" property="itemId" jdbcType="INTEGER"/>
-	<result column="item_goods" property="itemGoods" jdbcType="INTEGER"/>
-	<result column="item_num" property="itemNum" jdbcType="INTEGER"/>
-	<result column="item_user" property="itemUser" jdbcType="INTEGER"/>
-	</resultMap>	
+	<resultMap type="Shopitems" id="getShopitemsList" autoMapping="true">
+	<id property="itemId" column="item_id" />
+	<result property="itemGoods" column="item_goods" />
+	<result property="itemNum" column="item_num" />
+	<result property="itemUser" column="item_user" />
+	</resultMap>	 -->
+	
+	
+<!-- 
+	<resultMap type="Shopitems" id="goodsType" autoMapping="true">
+		<id column="item_id" property="item_id" />
+		商品和类型是一对一
+		property="type" 中type表示实体类中的属性名称
+		javaType="type"中Type表示返回类型中的bin.Type，取别名后简写为type
+		<association property="goodsType" javaType="goodsType" autoMapping="true"></association>
+	</resultMap> -->
 
 </mapper>

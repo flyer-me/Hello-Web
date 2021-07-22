@@ -8,66 +8,63 @@ import javax.servlet.http.HttpSession;
 public class Shopitems {
 	
 	//购物车商品编号（主键）
-    private Integer itemId;
+    private Integer item_id;
 
-    private Integer itemGoods;
+    private Integer item_goods;
 
-    private Integer itemNum;
+    private Integer item_num;
 
-    private Integer itemUser;
+    private Integer item_user;
 
+    //----------------set
+	public void setItemId(Integer item_id) {
+        this.item_id = item_id;
+    }
+    public void setItemGoods(Integer item_goods) {
+        this.item_goods = item_goods;
+    }
+    public void setItemNum(Integer item_num) {
+        this.item_num = item_num;
+    }
+    public void setItemUser(Integer item_user) {
+        this.item_user = item_user;
+    }
+    //----------------get
     public Integer getItemId() {
-        return itemId;
+        return item_id;
     }
-
-    public Shopitems() {
-		super();
-		// 
-	}
-
-	public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public Integer getItemGoods(){
+		return item_goods;
     }
-
-    public Integer getItemGoods() {
-        return itemGoods;
+    public Integer getItemNum(){
+		return item_num;
     }
-
-    public void setItemGoods(Integer itemGoods) {
-        this.itemGoods = itemGoods;
+    public Integer getItemUser(){
+		return item_user;
     }
-
-    public Shopitems(Integer itemId, Integer itemGoods, Integer itemNum, Integer itemUser) {
-		super();
-		this.itemId = itemId;
-		this.itemGoods = itemGoods;
-		this.itemNum = itemNum;
-		this.itemUser = itemUser;
-	}
-
-	public Integer getItemNum() {
-        return itemNum;
+    //??
+    public Integer getUserName(){
+		return item_goods;
+    	
     }
-
-    public void setItemNum(Integer itemNum) {
-        this.itemNum = itemNum;
-    }
-
-    public Integer getItemUser() {
-        return itemUser;
-    }
-
-    public void setItemUser(Integer itemUser) {
-        this.itemUser = itemUser;
-    }
-
-	public static boolean insert(String pid) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public HttpSession getShopitemsList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Shopitems(Integer item_id, Integer item_goods, Integer item_num, Integer item_user) {
+		super();
+		this.item_id = item_id;
+		this.item_goods = item_goods;
+		this.item_num = item_num;
+		this.item_user = item_user;
+	}
+	   
+    public Shopitems() {
+		super();
+		// 
+	}
+
+
 }

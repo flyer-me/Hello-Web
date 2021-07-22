@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+String path = request.getContextPath();
+request.setAttribute("path", request.getContextPath());
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -23,7 +30,7 @@
 					</a>
 				</div>
 				<div class="user">
-					<a target="_blank" href="#">登录</a>
+					<a target="_blank" href="login.jsp">登录</a>
 					<span>|</span>
 					<a target="_blank" href="#">免费注册</a>
 				</div>
@@ -531,6 +538,7 @@
 								<li class=" last"><a href="">我的常购商品</a></li>
 								<li class="clearfix btn"><input type="text" placeholder="商品名称/商品编号"><button>搜索</button></li>
 							</ol>
+																																							
 							<!-- 选择标题部分 -->
 							<div class="sect">
 								<ul>
@@ -542,9 +550,52 @@
 									<li class="handle">操作</li>
 								</ul>
 							</div>
+							
 							<!-- 个人中心的内容 -->
 							<!-- 全部订单 -->
 							<div class="MeOrder">
+							
+							<!-- ++++++ -->
+							
+							<c:forEach items="${pageInfo.list }" var="o" varStatus="status">
+							<c:forEach items="${o.orderDetail }" var="od" varStatus="status">
+									<div class="merchandiseList">
+									<div class="ListHead">
+										<span>${o.orderTime }</span>
+										<span>订单号：<em>${o.orderId}</em></span>
+									</div>
+									<div class="ListArea">
+										<ul class="ListTable">		
+											<li class="one clearfix">
+												<a href="">
+													<div class="pruPic"><img src="images/${od.detail_good.goodsImg }" alt=""></div>
+													<div class="pruTitle">
+														${od.detail_good.goodsName }
+													</div>
+												</a>
+												<div class="pruNum">×<i>${od.detailNum }</i></div>
+											</li>
+											<li class="two">${o.orderName }</li>
+											<li class="three">
+												<p>总额${o.orderPrice}</p>
+												<p>在线支付</p>
+												<p>含税/运费：￥0.00</p>
+											</li>
+											<li class="four">
+												<p class="ing">${o.orderStatusId.orderStatusName }</p>
+												<p><a href="">订单详情</a></p>
+											</li>
+											<li class="five">
+												<a href="">取消订单</a>
+											</li>
+											
+										</ul>
+									</div>
+								</div>	</c:forEach>
+							</c:forEach>
+							<!-- ++++++ -->
+							
+							<%--<%
 								<!-- 报关中 -->
 								<div class="merchandiseList">
 									<div class="ListHead">
@@ -563,7 +614,7 @@
 											</li>
 											<li class="two">马云</li>
 											<li class="three">
-												<p>总额￥450.00</p>
+												<p>总额${totalMoney}</p>
 												<p>在线支付</p>
 												<p>含税/运费：￥0.00</p>
 											</li>
@@ -595,7 +646,7 @@
 											</li>
 											<li class="two">马云</li>
 											<li class="three">
-												<p>总额￥450.00</p>
+												<p>总额${totalMoney}</p>
 												<p>在线支付</p>
 												<p>含税/运费：￥0.00</p>
 											</li>
@@ -604,7 +655,7 @@
 											</li>
 											<li class="five">
 												<a href="">取消订单</a>
-												<a href="">去付款</a>
+												<a href="${path }/PayServlet">去付款</a>
 											</li>
 										</ul>
 									</div>
@@ -613,7 +664,7 @@
 								<div class="merchandiseList">
 									<div class="ListHead">
 										<span>2016-01-05 09:43:10</span>
-										<span>订单号：<em>11807098859</em></span>
+										<span>订单号：<em>${ordersNum}</em></span>
 									</div>
 									<div class="ListArea">
 										<ul class="ListTable">
@@ -628,7 +679,7 @@
 											</li>
 											<li class="two">马云</li>
 											<li class="three">
-												<p>总额￥450.00</p>
+												<p>总额${totalMoney}</p>
 												<p>在线支付</p>
 												<p>含税/运费：￥0.00</p>
 											</li>
@@ -646,7 +697,7 @@
 								<div class="merchandiseList">
 									<div class="ListHead">
 										<span>2016-01-05 09:43:10</span>
-										<span>订单号：<em>11807098859</em></span>
+										<span>订单号：<em>${ordersNum}</em></span>
 									</div>
 									<div class="ListArea">
 										<ul class="ListTable">
@@ -661,7 +712,7 @@
 											</li>
 											<li class="two">马云</li>
 											<li class="three">
-												<p>总额￥450.00</p>
+												<p>总额${totalMoney}</p>
 												<p>在线支付</p>
 												<p>含税/运费：￥0.00</p>
 											</li>
@@ -680,7 +731,7 @@
 								<div class="merchandiseList">
 									<div class="ListHead">
 										<span>2016-01-05 09:43:10</span>
-										<span>订单号：<em>11807098859</em></span>
+										<span>订单号：<em>${ordersNum}</em></span>
 									</div>
 									<div class="ListArea">
 										<ul class="ListTable">
@@ -695,7 +746,7 @@
 											</li>
 											<li class="two">马云</li>
 											<li class="three">
-												<p>总额￥450.00</p>
+												<p>总额${totalMoney}</p>
 												<p>在线支付</p>
 												<p>含税/运费：￥0.00</p>
 											</li>
@@ -710,6 +761,7 @@
 										</ul>
 									</div>
 								</div>
+								%>--%>
 							</div>
 						</div>
 					</div>
