@@ -9,9 +9,8 @@
 <!-- 给类取别名 -->
 	<typeAliases>
 		<!-- 类型 -->
-		<!-- <typeAlias type="com.tym.pojo.Student" alias="stu"/> -->
 		<!-- 指定包路径下面的所有类取别名，可以直接使用类名，或类名首字母小写 -->
-		<package name="com.tym.pojo"/>
+		<package name="com.tnt.pojo"/>
 	</typeAliases>
 		
 	<!-- 引入插件 -->
@@ -39,6 +38,6 @@
 	</environments>
 	<!-- 引入sql映射文件 -->
 	<mappers>
-		<package name="com.tym.mapper"/>
+		<package name="com.tnt.mapper"/>
 	</mappers>
 </configuration>

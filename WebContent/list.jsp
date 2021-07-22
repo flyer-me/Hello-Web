@@ -8,6 +8,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- 这里写：加入购物车 -->
+<script type="text/javascript" src="${path }/js/jquery.min.js"></script>
+<script>
+function insertCart(pid){
+	//alert(pid);//在商品列表功能完成后删除！
+	if(confirm("确定加入购物车？")){
+		window.location.href="${path}/insertCart?pid="+pid;
+	}
+}
+</script>
 	<meta charset="UTF-8">
 	<title>列表-澳猫团</title>
 	<link rel="shortcut icon" href="favicon.ico">
@@ -794,7 +804,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -819,7 +829,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -844,7 +854,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -869,7 +879,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -894,7 +904,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -919,7 +929,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -944,7 +954,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -969,7 +979,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -994,7 +1004,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1019,7 +1029,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1044,7 +1054,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1069,7 +1079,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1094,7 +1104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1119,7 +1129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1144,7 +1154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
@@ -1169,7 +1179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="hoverShow collect"><em></em>收藏</div>
 							<!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="${path }/Cart.jsp">加入购物车</a>
+								<a class="add" href="javascript:void(0)" onclick="insertCart(${pro.pid})">加入购物车</a>
 								<a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
