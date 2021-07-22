@@ -227,40 +227,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>新郑综合保税区</span>
 			</h4>
 			<ul class="IAbdArea">
-				<li class="IAbdw">
-					<span class="lincheck checkbox"></span>
-					<img src="images/cartpro.jpg" alt="">
-					<p>
-						<a class="pro" href="#">Blackmores EPo月见草 160粒保养卵巢 调节内分泌</a>
-						<a class="use" href="#">
-							适用税率：10%
-							<s></s>
-							<u>
-								<em></em>
-								税费 = 不含税价格 * 件数 * 商品税率<br>
-								根据海关规定，本商品适用税率 : 10%,<br>
-								若订单总税额 ≤ 50元，海关予以免征。<br>
-							</u>
-						</a>
-					</p>
-					<ul class="IAul">
-						<li class="IAtax">￥<u>11.40</u></li>
-						<li class="price">
-							<strong>¥ <u>82.00</u></strong><br>
-							<s>125元</s>
-						</li>
-						<li class="num">
-							<span class="reduce">-</span>
-							<input type="text" value="1">
-							<span class="add">+</span>
-						</li>
-						<li class="Lastprice">¥ <u>82.00</u></li>
-						<li class="last btn">
-							<button>移入收藏夹</button><br>
-							<button class="delet">删除</button>
-						</li>
-					</ul>
-				</li>
+			<!-- 位置 -->
+			<!-- 商品显示 -->
+        <td><span class="STYLE1">
+        <!-- 多条件查询表单 -->
+        <!-- 多条件查询表单 end-->
+        	<form action="${path }/getProductList" method="post" id="myForm">
+        				<!-- 当前页 -->
+        			<input type="hidden" name="page" value="1">
+					商品名称:<input type="text" name="pname" value="${pro.pname }">
+					类型：<select name="tid"><!--从数据库动态的获取  -->
+							<option value="-1">请选择</option>
+							<c:forEach items="${tlist }" var="ty">
+								<option value="${ty.tid }" ${ty.tid == pro.type.tid?"selected":"" }>${ty.tname }</option>
+							</c:forEach>
+					</select>
+					<input type="submit" value="查询">
+				</form>	
+		</span>
+		<form action="${path }/deleteByIds" name="deletesForm"  method="post">
+		<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+          <tr>
+            <td width="3%" height="19" background="images/bg.gif" bgcolor="#FFFFFF"><div align="center">
+            </div></td>
+            <td width="5%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">商品图片</span></div></td>
+            <td width="30%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">商品名称</span></div></td>
+            <td width="0%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1"></span></div></td>
+            <td width="20%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">商品价格</span></div></td>
+            <td width="20%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">数量</span></div></td>
+            <td width="20%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">操作</span></div></td>
+          </tr>
+          <c:forEach items="${plist }" var="pro" varStatus="state">
+          <tr>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center">
+              <input type="checkbox" name="itemId" value="${pro.itemId }"/>
+            </div></td>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center" class="STYLE1">
+              <div align="center">${state.count }</div>
+            </div></td>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1"><img width="48px" src="http://localhost:8080/fileSystem/uploadimg/${pro.imgurl }"></span></div></td>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.itemGoods }</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.price }</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.itemNum }</span></div></td>
+            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE4">
+            
+             <img src="images/pwd2_mobile.jpg" width="16" height="16" />
+            <A href="${pageContext.request.contextPath }/getProductInfoById?pid=${pro.pid }">查看</A>
+            &nbsp; &nbsp;
+            
+            <img src="images/edt.gif" width="16" height="16" />
+            <A href="${pageContext.request.contextPath }/toUpdate?pid=${pro.pid}">编辑</A>
+            &nbsp; &nbsp;
+            <img src="images/del.gif" width="16" height="16" />
+            <A href="javascript:void(0)" onclick="deleteById(${pro.pid})">删除</A>
+            </span></div></td>
+          </tr>
+          </c:forEach>
+        </table></form></td><!-- 商品显示 -->
+			<!-- 位置 -->
 				<li class="IAbdw">
 					<span class="lincheck checkbox"></span>
 					<img src="images/cartpro.jpg" alt="">
@@ -308,7 +332,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="checkbox Allcheck"></span>
 				<span>全选</span>
 				<span class="Information">删除选中商品</span>
-				<a href="${path }/Cart-pay.jsp">去结算</a>
+				<a href="${path }/Cart-indent.jsp">去结算</a>
 				<p>
 					<strong>已选商品<b id="allnum"> 1 </b>件</strong>
 					<strong>总价（不含运费）：<b>￥<u id="allpri">114.00</u></b></strong><br>
