@@ -175,6 +175,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</header>
 	<!-- 搜索和logo -->
+	<!-- 测试位置 -->
+	<!--把商品列表展示，遍历，使用JSTL  -->
+	<table align="center" cellpadding="5" cellspacing="5">
+		<tr>
+			<td>购物车物品编号</td>
+			<td>商品编号</td>
+			<td>数量</td>
+		</tr>
+		<!--items:要遍历的元素对象  -->
+		<!--var:表示当前遍历的每一个对象  -->
+		<c:forEach items="${plist }" var="pro">
+			<tr>
+				<td>${pro.pid }</td>
+				<td>${pro.pname }</td>
+				<td>${pro.price }</td>
+				<td>${pro.number }</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	<!-- 测试位置 -->
 <section class="boxS">
 	<div class="logoAndSearch w1190">
 		<!-- logo -->
@@ -227,55 +248,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>新郑综合保税区</span>
 			</h4>
 			<ul class="IAbdArea">
-			<!-- 位置 -->
-			<!-- 商品显示 -->
-        <td><span class="STYLE1">
-        <!-- 多条件查询表单 -->
-        <!-- 多条件查询表单 end-->
-        	<form action="${path }/getProductList" method="post" id="myForm">
-        				<!-- 当前页 -->
-        			<input type="hidden" name="page" value="1">
-					商品名称:<input type="text" name="pname" value="${pro.pname }">
-					类型：<select name="tid"><!--从数据库动态的获取  -->
-							<option value="-1">请选择</option>
-							<c:forEach items="${tlist }" var="ty">
-								<option value="${ty.tid }" ${ty.tid == pro.type.tid?"selected":"" }>${ty.tname }</option>
-							</c:forEach>
-					</select>
-					<input type="submit" value="查询">
-				</form>	
-		</span>
-		<form action="${path }/deleteByIds" name="deletesForm"  method="post">
-		<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
-          <tr>
-            <td width="3%" height="19" background="images/bg.gif" bgcolor="#FFFFFF"><div align="center">
-            </div></td>
-            <td width="5%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">商品图片</span></div></td>
-            <td width="30%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">商品名称</span></div></td>
-            <td width="0%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1"></span></div></td>
-            <td width="20%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">商品价格</span></div></td>
-            <td width="20%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">数量</span></div></td>
-            <td width="20%" height="19" background="images/bg.gif" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">操作</span></div></td>
-          </tr>
-          <c:forEach items="${plist }" var="pro" varStatus="state">
-          <tr>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center">
-              <input type="checkbox" name="itemId" value="${pro.itemId }"/>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center" class="STYLE1">
-              <div align="center">${state.count }</div>
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1"><img width="48px" src="http://localhost:8080/fileSystem/uploadimg/${pro.imgurl }"></span></div></td>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.itemGoods }</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.price }</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE1">${pro.itemNum }</span></div></td>
-            <td height="20" bgcolor="#FFFFFF" nowrap="nowrap"><div align="center"><span class="STYLE4">
-
-            </span></div></td>
-          </tr>
-          </c:forEach>
-        </table></form></td><!-- 商品显示 -->
-			<!-- 位置 -->
 				<li class="IAbdw">
 					<span class="lincheck checkbox"></span>
 					<img src="images/cartpro.jpg" alt="">

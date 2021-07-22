@@ -10,6 +10,13 @@ public interface ShopitemsMapper {
 	/*
 	 * 包含操作:列表
 	 */
+	
+	//查询购物车内所有商品信息
+	List<Shopitems> getShopitems();
+	
+	
+	
+	
     int countByExample(ShopitemsExample example);
 
     int deleteByPrimaryKey(Integer itemId);

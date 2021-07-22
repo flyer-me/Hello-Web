@@ -12,4 +12,6 @@ public interface ShopitemsService {
 	
 	//显示
 	List<Shopitems> getShopitemsList();
+
+	List<Shopitems> getShopitems();
 }

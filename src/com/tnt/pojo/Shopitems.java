@@ -48,11 +48,12 @@ public class Shopitems {
     	
     }
 
+
 	public HttpSession getShopitemsList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	public Shopitems(Integer item_id, Integer item_goods, Integer item_num, Integer item_user) {
 		super();
 		this.item_id = item_id;

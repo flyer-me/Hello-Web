@@ -35,7 +35,7 @@ public class PhoneLoginServlet extends HttpServlet {
 				//把用户信息设置到session的作用域中
 					HttpSession session = request.getSession();
 					session.setAttribute("user", user);
-				 request.getRequestDispatcher("/list.jsp").forward(request, response);//登录成功，跳转系统页面
+				 request.getRequestDispatcher("/index.jsp").forward(request, response);//登录成功，跳转系统页面
 				 	return;
 				}else{
 					response.sendRedirect(request.getContextPath()+"/login.jsp");

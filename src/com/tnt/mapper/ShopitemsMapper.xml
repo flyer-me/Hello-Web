@@ -12,13 +12,28 @@
     	values (#{itemId,jdbcType=INTEGER}, #{itemGoods,jdbcType=INTEGER}, #{itemNum,jdbcType=INTEGER}, #{itemUser,jdbcType=INTEGER})
  	</insert>
  	
- 	<select id="getShopitemsList" >
+ 	
+ 	<!-- 查询购物车内所有商品信息 -->
+ 	<select id="getShopitems" resultMap ="Shopitems">
+		select * from shopitems s left join goods g on s.item_goods=g.goods_id
+	</select>
+	
+	
+	<resultMap type="Shopitems" id="Shopitems" autoMapping="true">
+	<id column="item_id" property="item_id"/>
+	<result column="item_goods" property="item_goods"/>
+	<result column="item_num" property="item_num"/>
+	<result column="item_user" property="item_user"/>
+	</resultMap>
+	 
+	 
+	 
+	<!--  -->
+ 	<select id="getShopitemsList" resultMap ="Shopitems">
 		select * from shopitems
 	</select>
-		 
 	
-	
-<!-- 
+	<!-- 
 	<resultMap type="Shopitems" id="goodsType" autoMapping="true">
 		<id column="item_id" property="item_id" />
 		商品和类型是一对一

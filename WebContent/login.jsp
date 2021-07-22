@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p class="clearfix Jzmm">
 							<span class="checkbox checked"></span>
 							<span>记住密码</span>
-							<a target="_blank" href="xiumi.jsp">忘记密码？</a>
+							<a target="_blank" href="Member-xiumi.jsp">忘记密码？</a>
 						</p>
 						<div class="login_input">
 						<input type="submit" value="登　录">
